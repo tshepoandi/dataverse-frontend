@@ -54,8 +54,7 @@ const HomePage = () => {
           </div>
         </div>
       </div>
-      <div className='w-[30%]'>
-        {/* Chart goes here */}
+      <div className='w-[60%]'>
         {
           data.length > 0 && (
             <LineChart data={data}/>
@@ -70,23 +69,3 @@ const HomePage = () => {
 
 export default HomePage
 
-/* <div className='px-8'>
-        <div>
-        { data.length > 0 && 
-          <h1>Select Which Headers You 
-              would like to use for your data 
-          </h1>}
-        </div>
-        <ul className='my-8 grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-2'>
-          {data.length > 0 && (
-            Object.keys(data[0]).map((key) => {
-              return (
-                <li key={key} className='flex py-2 gap-2'>
-                  <input type="checkbox" defaultChecked className="checkbox checkbox-success" />
-                  <p className='font-semibold '>{key}</p>
-                </li>
-              )
-            }))
-          }
-        </ul>
-      </div> */

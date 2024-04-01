@@ -4,29 +4,7 @@ import { Chart, registerables } from 'chart.js'
 Chart.register(...registerables)
 
 
-const state = {
-    // labels: data.map(item => item.Age_Group),
-    datasets: [
-      {
-        label: 'Class Strength',
-        backgroundColor: [
-          'Indigo',
-          'Purple',
-          'Yellow',
-          'Teal',
-          'Red',
-          'Navy',
-          'Brown',
-        ],
-        fill: false,
-        lineTension: 0.5,
-        borderColor: 'rgba(0,0,0,1)',
-        borderWidth: 2,
-        data: [10, 14, 17, 16, 19, 16, 45],
-        // data.map(item => item.Revenue)
-      },
-    ],
-  }
+
 
 
 const LineChart = ({ data }) => {
@@ -36,9 +14,31 @@ const LineChart = ({ data }) => {
     }) 
     keys.forEach(key => {
         const value = data[0][key];
-        console.log(key)
         console.log(`${key}: ${value}`);
     });
+
+    const state = {
+        labels: data.map(item => item.Age_Group),
+        datasets: [
+          {
+            label: 'Revenue',
+            backgroundColor: [
+              'Indigo',
+              'Purple',
+              'Yellow',
+              'Teal',
+              'Red',
+              'Navy',
+              'Brown',
+            ],
+            fill: false,
+            lineTension: 0.5,
+            borderColor: 'rgba(0,0,0,1)',
+            borderWidth: 2,
+            data: data.map(item => item.Revenue)
+          },
+        ],
+      }
     return (
         <div>
             <Line
