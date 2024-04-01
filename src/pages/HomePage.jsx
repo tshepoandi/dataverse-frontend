@@ -28,7 +28,7 @@ const HomePage = () => {
 
 
   return (
-    <main className='mx-auto max-w-4xl'>
+    <main className='mx-auto  max-w-4xl'>
       <div className='py-12 px-8 text-start'>
         <h1 className='py-4 capitalize text-4xl md:text-4xl font-bold'>
           Upload Your Data Here
@@ -54,12 +54,27 @@ const HomePage = () => {
           </div>
         </div>
       </div>
-      <div className='w-[60%]'>
-        {
-          data.length > 0 && (
-            <LineChart data={data} xAxis="Age_Group" yAxis="Revenue"/>
-          )
-        }
+      <div className=''>
+        <div className='text-center'>
+          <ul className='grid my-16 grid-rows-4 grid-flow-col gap-4 justify-center align-center'>
+            {data.length > 0 && (
+            Object.keys(data[0]).map((key)=>{
+              return (
+                <li className='text-white px-4 py-2 font-semibold bg-green-800 hover:bg-green-900 rounded-xl'>{key}</li>
+              )
+            })
+          )}
+          </ul>
+          
+        </div>
+        <div>
+          {
+            data.length > 0 && (
+              <LineChart data={data} xAxis="Age_Group" yAxis="Revenue"/>
+            )
+          }
+        </div>
+        
         
 
       </div>
