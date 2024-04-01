@@ -1,31 +1,32 @@
 import React from 'react'
-
-const menuLinks = [
-  { href: '/',text: 'Home'},
-  { href: '/data',text: 'Data'},
-  { href: '/blog',text: 'Blog'},
-  { href: '/contact',text: 'Contact'}
-  ]
+import Navbar from '../components/Navbar'
 
 const HomePage = () => {
   return (
-    <main className=''>
-      <nav className=''>
+    <main className='mx-auto max-w-4xl'>
+      <div className='py-12 px-8 text-start'>
+        <h1 className='py-4 capitalize text-4xl font-bold'>
+          Upload Your Data Here
+        </h1>
         <div>
-          {/* logo */}
-          <div>
-            the Dataverse
-          </div>
-          {/* navbar */}
-          <ul> 
-              {menuLinks.map((link)=>(
-                <li key={link.href} className=''>
-                  <a href={link.href} className=''>{link.text}</a>
-                </li>
-              ))}
-          </ul>
+        <div className="relative">
+  <input
+    className="hidden"
+    id="file"
+    type="file"
+    name="file"
+    accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"
+  />
+  <label
+    htmlFor="file"
+    className="inline-block bg-green-800 hover:bg-green-900 text-white font-bold py-2 px-4 rounded-xl cursor-pointer"
+  >
+    Upload File
+  </label>
+</div>
+
         </div>
-      </nav>
+      </div>
       <div className=''>
 
       </div>
