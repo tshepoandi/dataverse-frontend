@@ -7,7 +7,7 @@ Chart.register(...registerables)
 
 
 
-const LineChart = ({ data }) => {
+const LineChart = ({ data,xAxis,yAxis }) => {
     
     const keys = Object.keys(data[0]).map((key) => {
         return key
@@ -18,7 +18,7 @@ const LineChart = ({ data }) => {
     });
 
     const state = {
-        labels: data.map(item => item.Age_Group),
+        labels: data.map(item => item[xAxis]),
         datasets: [
           {
             label: 'Revenue',
@@ -35,7 +35,7 @@ const LineChart = ({ data }) => {
             lineTension: 0.5,
             borderColor: 'rgba(0,0,0,1)',
             borderWidth: 2,
-            data: data.map(item => item.Revenue)
+            data: data.map(item => item[yAxis])
           },
         ],
       }

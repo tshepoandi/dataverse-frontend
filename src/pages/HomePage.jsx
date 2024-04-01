@@ -57,7 +57,7 @@ const HomePage = () => {
       <div className='w-[60%]'>
         {
           data.length > 0 && (
-            <LineChart data={data}/>
+            <LineChart data={data} xAxis="Age_Group" yAxis="Revenue"/>
           )
         }
         
