@@ -44,7 +44,7 @@ const Navbar = () => {
             </div>
         </div>
 
-
+        {/* Navbar End */}
         <div className='navbar-end'>
             <div>
             <FaUser/>
