@@ -12,7 +12,7 @@ const menuLinks = [
 
 const Navbar = () => {
   return (
-    <div>
+    <div className="bg-green-700 text-white w-[100%] z-1000">
         <nav className='navbar mx-auto max-w-6xl '>
         {/* Navbar Start */}
 
@@ -23,7 +23,7 @@ const Navbar = () => {
             </div>
             <ul tabIndex={0} className='p-2 shadow menu dropdown-content bg-base-100 rounded-box w-52' style={{'zIndex': '100'}}> 
                 {menuLinks.map((link)=>(
-                <li key={link.href} className=''>
+                <li key={link.href} className='text-black'>
                     <a href={link.href} className=''>{link.text}</a>
                 </li>
                 ))}

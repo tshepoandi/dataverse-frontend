@@ -9,6 +9,21 @@ import LineChart from '../components/Charts/LineChart';
 
 const HomePage = () => {
   const [data,setData] = useState([])
+  const [header,setHeader] = useState("")
+  const [xAxis,setXaxis] = useState("")
+  const [yAxis,setYaxis] = useState("")
+  const [array,setArray] = useState([])
+
+  const handleYaxis = (e) => {
+    setYaxis(e.target.value)
+    console.log(yAxis)
+    
+  }
+  const handleXaxis = (e) => {
+    setXaxis(e.target.value)
+    console.log(xAxis)
+    
+  }
   const handleOnChage = (e) => {
     
 
@@ -26,53 +41,86 @@ const HomePage = () => {
     }
   }
 
-
   return (
-    <main className='mx-auto  max-w-4xl'>
+    <main className='mx-auto max-w-4xl'>
       <div className='py-12 px-8 text-start'>
         <h1 className='py-4 capitalize text-4xl md:text-4xl font-bold'>
-          Upload Your Data Here
+          Upload Your <span className='text-green-800'>Excel Worksheet</span>  Here
         </h1>
         <div>
           <div 
             className="relative"
             onChange={handleOnChage}
               >
-            <input
-              className="hidden"
-              id="file"
-              type="file"
-              name="file"
-              accept=".xlsx .xls,"
-            />
+              <input
+                className="hidden"
+                id="file"
+                type="file"
+                name="file"
+                accept=".xlsx .xls,"
+              />
               <label
-              htmlFor="file"
-              className="inline-block bg-green-800 hover:bg-green-900 text-white font-bold py-2 px-4 rounded-xl cursor-pointer"
-            >
-              Upload File
-            </label>
+                htmlFor="file"
+                className="inline-block bg-green-800 hover:bg-green-900 text-white font-bold py-2 px-4 rounded-xl cursor-pointer"
+              >
+                Upload File
+              </label>
+          </div>
+          <div>
+            
           </div>
         </div>
       </div>
+      {/* options */}
       <div className=''>
         <div className='text-center'>
-          <ul className='grid my-16 grid-rows-4 grid-flow-col gap-4 justify-center align-center'>
+          <ul className='grid my-16 grid-rows-5 grid-flow-col gap-4 justify-center align-center'>
             {data.length > 0 && (
             Object.keys(data[0]).map((key)=>{
               return (
-                <li className='text-white px-4 py-2 font-semibold bg-green-800 hover:bg-green-900 rounded-xl'>{key}</li>
+                <li key={key} 
+                    className="">
+                  <h1 
+                    className=''  
+                    >
+                    {key} 
+                  </h1>
+                  
+                </li>
               )
             })
           )}
           </ul>
-          
-        </div>
-        <div>
           {
             data.length > 0 && (
-              <LineChart data={data} xAxis="Age_Group" yAxis="Revenue"/>
+              <div className='flex justify-center align-center gap-8'>
+                <div className='flex gap-2'>
+                  <input type="text"  
+                        className="" 
+                        onChange={handleXaxis}
+                        placeholder='Set Your X Axis'
+                  />
+                </div>
+                <div className="flex gap-2">
+                <input type="text"  
+                        className="" 
+                        onChange={handleYaxis}
+                        placeholder='Set Your Y Axis'
+                  />
+                </div> 
+              </div>
             )
           }
+          
+          
+        </div>
+        <div className=''>
+          {
+            data.length > 0 && (
+              <LineChart data={data} xAxis={xAxis} yAxis={yAxis}/>
+            )
+          }
+          {console.log(data)}
         </div>
         
         

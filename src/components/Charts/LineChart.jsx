@@ -14,33 +14,39 @@ const LineChart = ({ data,xAxis,yAxis }) => {
     }) 
     keys.forEach(key => {
         const value = data[0][key];
-        console.log(`${key}: ${value}`);
     });
-
+    console.log(xAxis)
     const state = {
         labels: data.map(item => item[xAxis]),
         datasets: [
           {
-            label: 'Revenue',
+            label: xAxis,
             backgroundColor: [
               'Indigo',
-              'Purple',
-              'Yellow',
-              'Teal',
-              'Red',
-              'Navy',
-              'Brown',
+            ],
+            fill: false,
+            lineTension: 0.7,
+            borderColor: 'rgba(0,0,0,1)',
+            borderWidth: 2,
+            data: data.map(item => item[yAxis])
+          },
+          {
+            label: 'Blue',
+            backgroundColor: [
+              'green',
+              
             ],
             fill: false,
             lineTension: 0.5,
             borderColor: 'rgba(0,0,0,1)',
             borderWidth: 2,
-            data: data.map(item => item[yAxis])
+            data: [10,100,150,1000,]
           },
         ],
       }
     return (
         <div>
+          
             <Line
                 data={state}
                 options={{
