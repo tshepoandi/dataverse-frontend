@@ -9,6 +9,7 @@ const HomePage = () => {
   const [xAxis,setXaxis] = useState("")
   const [yAxis,setYaxis] = useState("")
   const [analysis,setAnalysis] = useState("")
+  const [loading, setLoading] = useState(false);
  
 
 
@@ -49,12 +50,14 @@ const HomePage = () => {
 
 
     try {
-      const response = await axios.post('https://dataverse-1.onrender.com/api/send-prompt', {
+      const response = await axios.post('http://localhost:3000/api/send-prompt', {
         prompt: prompt
       });
       setAnalysis(response.data.generatedText);
     } catch (error) {
       console.error('Error:', error);
+    } finally {
+      setLoading(false); // Set loading to false after the data is fetched and processed
     }
     }
   }
@@ -86,9 +89,12 @@ const HomePage = () => {
           </div>
           <div className='my-20'>
           {
+            loading && <span className="loading loading-infinity loading-lg"></span>
+          }
+          {
             analysis.length !== 0 && (
               <div>
-                {analysis.split('**').map((section, index) => {
+                {analysis.split('**' || '##').map((section, index) => {
                   if (index % 2 === 0) {
                     return <p key={index}>{section}</p>;
                   } else {
