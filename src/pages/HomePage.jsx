@@ -2,7 +2,6 @@ import React from 'react'
 import { useState } from 'react'
 import * as XLSX from 'xlsx';
 import axios from 'axios'
-import { useEffect } from 'react'
 
 const HomePage = () => {
   const [data,setData] = useState([])
@@ -26,7 +25,7 @@ const HomePage = () => {
   const handleOnChage = (e) => {
     
 
-
+    setLoading(true)
     const reader = new FileReader();
     reader.readAsBinaryString(e.target.files[0])
     reader.onload = async(event) => {
@@ -50,7 +49,7 @@ const HomePage = () => {
 
 
     try {
-      const response = await axios.post('http://localhost:3000/api/send-prompt', {
+      const response = await axios.post('https://dataverse-1.onrender.com/api/send-prompt', {
         prompt: prompt
       });
       setAnalysis(response.data.generatedText);
